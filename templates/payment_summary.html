@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}Payment Summary{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">💰 Payment Summary</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Vehicle Reg</th>
+                <th>Expected Price (KES)</th>
+                <th>Total Paid (KES)</th>
+                <th>Balance (KES)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ "{:,}".format(row[1]) }}</td>
+                <td>{{ "{:,}".format(row[2]) }}</td>
+                <td>
+                    <span class="fw-bold {% if row[3] <= 0 %}text-success{% else %}text-danger{% endif %}">
+                        {{ "{:,}".format(row[3]) }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="/" class="btn btn-secondary mt-3">🔙 Back to Home</a>
+{% endblock %}

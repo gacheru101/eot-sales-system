@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload New Vehicles{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">📤 Upload New Vehicle Excel File</h2>
+
+<form method="POST" action="/upload" enctype="multipart/form-data" class="w-100 w-md-50 mx-auto border p-4 shadow-sm bg-light rounded">
+    <div class="mb-3">
+        <label for="excel_file" class="form-label">Select Excel (.xlsx) File</label>
+        <input type="file" name="excel_file" id="excel_file" accept=".xlsx" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">⬆ Upload File</button>
+</form>
+
+<a href="/" class="btn btn-secondary mt-4 d-block w-100 w-md-50 mx-auto">🔙 Back to Home</a>
+{% endblock %}

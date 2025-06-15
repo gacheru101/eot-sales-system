@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}Booked Vehicles{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">🚗 Booked Vehicles</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Reg No</th>
+                <th>Client Name</th>
+                <th>Client ID</th>
+                <th>Sale Date</th>
+                <th>Price (KES)</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in bookings %}
+            <tr>
+                <td>{{ b[0] }}</td>
+                <td>{{ b[1] }}</td>
+                <td>{{ b[2] }}</td>
+                <td>{{ b[3] }}</td>
+                <td>{{ "{:,.0f}".format(b[4]) if b[4] else "—" }}</td>
+                <td>
+                    <span class="badge {% if b[5] == 'sold' %}bg-success{% else %}bg-warning text-dark{% endif %}">
+                        {{ b[5] or "booked" }}
+                    </span>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

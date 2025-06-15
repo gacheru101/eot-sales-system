@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}Fix Missing Prices{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">🛠 Fix Missing Vehicle Prices</h2>
+
+{% if bookings %}
+<div class="table-responsive">
+    <table class="table table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Vehicle Reg</th>
+                <th>Client</th>
+                <th>Sale Date</th>
+                <th>Enter Price (KES)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reg, client, date in bookings %}
+            <tr>
+                <form method="POST" class="d-flex align-items-center">
+                    <td>
+                        <input type="hidden" name="vehicle_reg" value="{{ reg }}">
+                        {{ reg }}
+                    </td>
+                    <td>{{ client }}</td>
+                    <td>{{ date }}</td>
+                    <td>
+                        <input type="number" name="price" class="form-control" required style="width: 150px;">
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-primary btn-sm">💾 Save</button>
+                    </td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="alert alert-success text-center" role="alert">
+    ✅ No bookings with missing prices!
+</div>
+{% endif %}
+{% endblock %}

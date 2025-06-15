@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Admin - All Bookings{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">📋 All Booked Vehicles (Admin View)</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Reg No</th>
+            <th>Client</th>
+            <th>Sale Date</th>
+            <th>Price (KES)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for b in bookings %}
+        <tr>
+            <td>{{ b[0] }}</td>
+            <td>{{ b[1] }}</td>
+            <td>{{ b[2] }}</td>
+            <td>{{ "{:,.0f}".format(b[3]) if b[3] else "" }}</td>
+            <td>
+                <a class="btn btn-sm btn-danger" href="/admin/bookings/delete/{{ b[0] }}" onclick="return confirm('Delete booking for {{ b[0] }}?')">🗑 Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

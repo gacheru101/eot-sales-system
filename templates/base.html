@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Sales System</title>
+    <style>
+        nav {
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            margin-right: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        hr {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">🏠 Home</a>
+        <a href="/record-payment">💵 Record Payment</a>
+        <a href="/payments">📄 View Payments</a>
+        <a href="/bookings">📚 Bookings</a>
+        <a href="/download-report">⬇️ Download Report</a>
+        <a href="/missing-prices">🛠 Fix Missing Prices</a>
+        <a href="/admin/bookings">🧑‍💼 Admin Bookings</a>
+        <a href="/admin/payments">🧾 Admin Payments</a>
+    </nav>
+    
+    {% block content %}{% endblock %}
+</body>
+</html>

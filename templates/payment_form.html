@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card shadow p-4">
+    <h2 class="mb-4">💰 Record Client Payment</h2>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="alert alert-info">
+          {% for message in messages %}
+            <div>{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form method="post" action="/record-payment">
+        <div class="mb-3">
+            <label class="form-label">Vehicle Registration</label>
+            <select name="vehicle_reg" class="form-select" required>
+                <option value="">-- Select Booked Vehicle --</option>
+                {% for reg in booked_vehicles %}
+                    <option value="{{ reg }}">{{ reg }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Payment Date</label>
+                <input type="date" name="date" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Reference Number</label>
+                <input type="text" name="reference" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Amount (KES)</label>
+            <input type="number" name="amount" class="form-control" required>
+        </div>
+
+        <div class="d-grid">
+            <button type="submit" class="btn btn-success btn-lg">Submit Payment</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <div class="card shadow p-4">
+            <h3 class="text-center mb-4">🔐 Login to Vehicle System</h3>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-warning" role="alert">
+                  {% for message in messages %}
+                    {{ message }}<br>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            {% endwith %}
+
+            <form method="POST" action="{{ url_for('login') }}">
+                <div class="mb-3">
+                    <label for="username" class="form-label">👤 Username</label>
+                    <input type="text" name="username" class="form-control" id="username" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">🔑 Password</label>
+                    <input type="password" name="password" class="form-control" id="password" required>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                    <label class="form-check-label" for="remember">
+                        Remember me
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-dark w-100 mb-2">Login</button>
+
+                <p class="text-center mb-0">
+                    🚀 New here? <a href="{{ url_for('register') }}" class="text-decoration-none">Register an account</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

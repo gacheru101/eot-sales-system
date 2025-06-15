@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Generate Documents{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+
+  <!-- ─── Sales Agreement Form ─────────────────────────────────────────── -->
+  <h2 class="mb-4">🚗 Generate Sales Agreement</h2>
+  <form method="post" action="/generate">
+    {% include "partials/_doc_fields.html" %}
+    <button type="submit" class="btn btn-primary w-100">Generate Sales Agreement</button>
+  </form>
+
+  <hr class="my-5">
+
+ 
+
+  
+
+ 
+
+</div>
+{% endblock %}
